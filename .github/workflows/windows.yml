@@ -32,7 +32,9 @@ jobs:
           python-version: '3.8'
       - name: Install Conan
         run: |
-          pip install bincrafters_package_tools
+          set PATH=%PATH%;%PYTHON%/Scripts/
+          pip.exe install conan --upgrade
+          pip.exe install conan_package_tools bincrafters_package_tools
           conan user
       - name: Run
         env:
@@ -43,5 +45,6 @@ jobs:
           CONAN_UPLOAD: ${{ secrets.CONAN_UPLOAD }}
           CONAN_USERNAME: "themhmoritz3"
         run: |
-          set CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
+          set CONAN_COMPILER="${{ matrix.compiler.name }}"
+          set CONAN_VISUAL_VERSIONS="${{ matrix.compiler.version }}"
           python build.py
