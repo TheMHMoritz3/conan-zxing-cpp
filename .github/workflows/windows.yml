@@ -32,7 +32,6 @@ jobs:
           python-version: '3.8'
       - name: Install Conan
         run: |
-          set PATH=%PATH%;%PYTHON%/Scripts/
           pip.exe install conan --upgrade
           pip.exe install conan_package_tools bincrafters_package_tools
           conan user
