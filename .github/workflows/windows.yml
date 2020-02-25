@@ -23,10 +23,6 @@ jobs:
         winowsCompiler:
         - { name: "Visual Studio", version: "16", buildType: "Debug"  }
         - { name: "Visual Studio", version: "16", buildType: "Release"}
-        - { name: "Visual Studio", version: "15", buildType: "Debug"  }
-        - { name: "Visual Studio", version: "15", buildType: "Release"}
-        - { name: "Visual Studio", version: "14", buildType: "Debug"  }
-        - { name: "Visual Studio", version: "14", buildType: "Release"}
     name: ${{ matrix.winowsCompiler.name }} ${{ matrix.winowsCompiler.version }} ${{ matrix.winowsCompiler.buildType }}
     # if: ${{ env.SPLIT_BY_BUILD_TYPE }} == 'true'
     steps:
@@ -34,9 +30,6 @@ jobs:
       - uses: actions/setup-python@v1
         with:
           python-version: '3.8'
-      - uses: microsoft/setup-msbuild@v1.0.0
-        with:
-          vs-version: [14.3,16.5]
       - name: Install Conan
         run: |
           pip install conan --upgrade
@@ -52,3 +45,35 @@ jobs:
           CONAN_VISUAL_VERSIONS: ${{ matrix.winowsCompiler.version }}
         run: |
           python build.py
+
+  splitByBuildTypesTrue2:
+    runs-on: windows-2016
+    strategy:
+      fail-fast: false
+      matrix:
+        winowsCompiler:
+        - { name: "Visual Studio", version: "15", buildType: "Debug"  }
+        - { name: "Visual Studio", version: "15", buildType: "Release"}
+    name: ${{ matrix.winowsCompiler.name }} ${{ matrix.winowsCompiler.version }} ${{ matrix.winowsCompiler.buildType }}
+    # if: ${{ env.SPLIT_BY_BUILD_TYPE }} == 'true'
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+      - name: Install Conan
+        run: |
+          pip install conan --upgrade
+          pip install conan_package_tools bincrafters_package_tools
+      - name: Run
+        env:
+          CONAN_LOGIN_USERNAME: ${{ secrets.CONAN_LOGIN_USERNAME }}
+          CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
+          CONAN_BUILD_TYPES: ${{ matrix.winowsCompiler.buildType }}
+          CONAN_UPLOAD: ${{ secrets.CONAN_UPLOAD }}
+          CONAN_COMPILER: ${{ matrix.winowsCompiler.name }}
+          CONAN_USERNAME: "themhmoritz3"
+          CONAN_VISUAL_VERSIONS: ${{ matrix.winowsCompiler.version }}
+        run: |
+          python build.py
+
