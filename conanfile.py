@@ -15,16 +15,16 @@ class ZXingCppConan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        self.run("git clone https://github.com/nu-book/zxing-cpp.git")
-
-        tools.replace_in_file("zxing-cpp/CMakeLists.txt", "project (ZXingCpp VERSION ${ZXING_VERSION_MAJOR}.${ZXING_VERSION_MINOR}.${ZXING_VERSION_PATCH})",
+        tools.download("https://github.com/nu-book/zxing-cpp/archive/v1.0.7.zip", "zxing-cpp.zip")
+        tools.unzip("zxing-cpp.zip", ".")
+        tools.replace_in_file("zxing-cpp-1.0.7/CMakeLists.txt", "project (ZXingCpp VERSION ${ZXING_VERSION_MAJOR}.${ZXING_VERSION_MINOR}.${ZXING_VERSION_PATCH})",
                               '''project (ZXingCpp VERSION ${ZXING_VERSION_MAJOR}.${ZXING_VERSION_MINOR}.${ZXING_VERSION_PATCH})
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()''')
 
     def configure_cmake(self):
         cmake = CMake(self)
-        cmake.configure(source_folder="zxing-cpp")
+        cmake.configure(source_folder="zxing-cpp-1.0.7")
         return cmake
 
     def build(self):
