@@ -2,7 +2,7 @@
 
 | Bintray | Windows | Linux & macOS |
 |:--------:|:---------:|:-----------------:|
-|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/package_name%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/package_name%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/github/bincrafters/conan-package_name?svg=true)](https://ci.appveyor.com/project/bincrafters/conan-package_name)|[![Build Status](https://travis-ci.com/bincrafters/conan-package_name.svg)](https://travis-ci.com/bincrafters/conan-package_name)|
+|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/package_name%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/package_name%3Abincrafters/_latestVersion)|[![Build status](![.github/workflows/conan.yml](https://github.com/TheMHMoritz3/conan-zxing-cpp/workflows/.github/workflows/conan.yml/badge.svg))](https://ci.appveyor.com/project/bincrafters/conan-package_name)|[![Build Status](https://travis-ci.com/bincrafters/conan-package_name.svg)](https://travis-ci.com/bincrafters/conan-package_name)|
 
 ## Conan Information
 
@@ -16,6 +16,9 @@ Bincrafters packages can be found in the following public Conan repository:
 ## Issues
 
 If you wish to report an issue or make a request for a Bincrafters package, please do so here:
+
+ * Currently no Automatic Windows Build.
+ * Issuing Linux build.
 
 [Bincrafters Community Issues](https://github.com/bincrafters/community/issues)
 
