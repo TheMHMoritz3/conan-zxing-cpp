@@ -21,8 +21,8 @@ jobs:
       fail-fast: false
       matrix:
         compiler:
-        - { name: "Windows Latest MSVC", version: "2019", buildType: "Debug"  }
-        - { name: "Windows Latest MSVC", version: "2019", buildType: "Release"}
+        - { name: "Visual Studio", version: "16", buildType: "Debug"  }
+        - { name: "Visual Studio", version: "16", buildType: "Release"}
     name: ${{ matrix.compiler.name }} ${{ matrix.compiler.version }} ${{ matrix.compiler.buildType }}
     # if: ${{ env.SPLIT_BY_BUILD_TYPE }} == 'true'
     steps:
