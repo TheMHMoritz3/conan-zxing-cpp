@@ -4,11 +4,11 @@ import os
 class ZXingCppConan(ConanFile):
     name = "zxing-cpp"
     version = "1.0.7"
-    license = "<Put the package license here>"
-    author = "<Put your name here> <And your email here>"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Opencv here>"
-    topics = ("<Put some tag here>", "<here>", "<and here>")
+    license = "Apache License Version 2.0"
+    author = "TheMHMoritz3 mhmoritz3@gmail.com"
+    url = "https://github.com/nu-book/zxing-cpp"
+    description = "This project is a C++ port of ZXing Library."
+    topics = ("Bar Code", "ZXing")
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = {"shared": True}
