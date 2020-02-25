@@ -23,6 +23,10 @@ jobs:
         winowsCompiler:
         - { name: "Visual Studio", version: "16", buildType: "Debug"  }
         - { name: "Visual Studio", version: "16", buildType: "Release"}
+        - { name: "Visual Studio", version: "15", buildType: "Debug"  }
+        - { name: "Visual Studio", version: "15", buildType: "Release"}
+        - { name: "Visual Studio", version: "14", buildType: "Debug"  }
+        - { name: "Visual Studio", version: "14", buildType: "Release"}
     name: ${{ matrix.winowsCompiler.name }} ${{ matrix.winowsCompiler.version }} ${{ matrix.winowsCompiler.buildType }}
     # if: ${{ env.SPLIT_BY_BUILD_TYPE }} == 'true'
     steps:
