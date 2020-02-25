@@ -20,10 +20,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        compiler:
+        winowsCompiler:
         - { name: "Visual Studio", version: "16", buildType: "Debug"  }
         - { name: "Visual Studio", version: "16", buildType: "Release"}
-    name: ${{ matrix.compiler.name }} ${{ matrix.compiler.version }} ${{ matrix.compiler.buildType }}
+    name: ${{ matrix.winowsCompiler.name }} ${{ matrix.winowsCompiler.version }} ${{ matrix.winowsCompiler.buildType }}
     # if: ${{ env.SPLIT_BY_BUILD_TYPE }} == 'true'
     steps:
       - uses: actions/checkout@v1
@@ -39,10 +39,10 @@ jobs:
           CONAN_USE_DOCKER: 1
           CONAN_LOGIN_USERNAME: ${{ secrets.CONAN_LOGIN_USERNAME }}
           CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
-          CONAN_BUILD_TYPES: ${{ matrix.compiler.buildType }}
+          CONAN_BUILD_TYPES: ${{ matrix.winowsCompiler.buildType }}
           CONAN_UPLOAD: ${{ secrets.CONAN_UPLOAD }}
-          CONAN_COMPILER: ${{ matrix.compiler.name }}
+          CONAN_COMPILER: ${{ matrix.winowsCompiler.name }}
           CONAN_USERNAME: "themhmoritz3"
-          CONAN_VISUAL_VERSIONS: ${{ matrix.compiler.version }}
+          CONAN_VISUAL_VERSIONS: ${{ matrix.winowsCompiler.version }}
         run: |
           python build.py
